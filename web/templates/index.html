@@ -3,14 +3,23 @@
 <link rel="stylesheet" media="all" href="{{ url_for('static', filename='styles/main.css')}}">
 <body>
 <a class="camera-warning">Please provide camera access!</a>
-<video class="video-preview"></video>
-<div class="action-buttons-container">
-        <div class="scan">
-            <button class="scan-button"></button>
+<video class="video-preview" id="stream"></video>
+<a class="usage-help">Point your camera at the code and press the scan button!</a>
+<div>
+    <div class="add-button-container">
+        <div class="button-container">
+            <button class="add-button" id="add-button"></button>
+            <small class="button-description">Create</small>
+        </div>
+    </div>
+    <div class="scan-button-container">
+        <div class="button-container">
+            <button class="scan-button" id="scan-button"></button>
             <small class="button-description">Scan</small>
         </div>
+    </div>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="{{ url_for('static', filename='scripts/main.js')}}"></script>
+<script src="scripts/main.js"></script>
 </html>
