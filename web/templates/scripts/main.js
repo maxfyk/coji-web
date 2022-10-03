@@ -1,3 +1,15 @@
+/*permissions*/
+if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({video: true})
+        .then(function (stream) {
+            video.srcObject = stream;
+        })
+        .catch(function (err0r) {
+            console.log("Something went wrong with permissions!");
+        });
+}
+
+/*camera preview*/
 $(function () {
     var video = $('body > video')[0];
 
@@ -17,12 +29,23 @@ $(function () {
 
 });
 
-/*Scan button*/
-var btnCapture = document.getElementById("scan-button");
-var stream = document.getElementById("stream");
-btnCapture.addEventListener("click", scanCode);
+const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+    'Access-Control-Request-Method': 'GET, POST, DELETE, PUT, OPTIONS',
+};
 
-function scanCode() {
+/*Scan button*/
+document.getElementById("scan-button").addEventListener("click", function () {
+    scanCode();
+});
+
+var stream = document.getElementById("stream");
+
+async function scanCode() {
+    var btnCapture = document.getElementById("scan-button");
+
     btnCapture.style.background = "transparent url('/static/icons/scan-loading.gif') no-repeat top left";
     btnCapture.style.backgroundSize = "cover";
     var img = new Image();
@@ -35,35 +58,37 @@ function scanCode() {
     }
     var base64Img = capture.toDataURL();
 
-    const data = {
+    var data = {
         'decode-type': 'image',
         'in-data': base64Img,
-        'user-id': 'asd22',
+        'user-id': null,
         'style-info': {
             'name': 'geom-original',
         }
     }
-    fetch(`{{API_URL}}/coji-code/decode`, options = {
-        method: "GET", mode: "no-cors", json: data, headers: {'content-type': 'application/json'},
+    await fetch(`{{API_URL}}/coji-code/decode`, options = {
+        method: "POST", body: JSON.stringify(data), headers: headers,
     })
-        .then(function (response) {
+        .then(await function (response) {
             return response.text();
-        }).then(function (text) {
-        console.log('GET response text:');
-        console.log(text);
-    });
-    btnCapture.style.background = "transparent url('/static/icons/scan-button.png') no-repeat top left";
-    btnCapture.style.backgroundSize = "cover";
-}
+        }).then(await function (text) {
+            btnCapture.style.background = "transparent url('/static/icons/scan-button.png') no-repeat top left";
+            btnCapture.style.backgroundSize = "cover";
 
+            console.log('POST response text:');
+            console.log(text);
 
-/*Permissions*/
-if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({video: true})
-        .then(function (stream) {
-            video.srcObject = stream;
-        })
-        .catch(function (err0r) {
-            console.log("Something went wrong with permissions!");
+            var resp = JSON.parse(text);
+            if (resp['error']){
+                alert(resp['text'])
+            }
+            else{
+                window.location.replace('data-preview/${resp[id]}');
+            }
         });
+
+        btnCapture.style.background = "transparent url('/static/icons/scan-button.png') no-repeat top left";
+        btnCapture.style.backgroundSize = "cover";
 }
+
+

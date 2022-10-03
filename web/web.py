@@ -9,10 +9,15 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/data-preview/<id>')
+def data_preview(id):
+    return id
+
+
 @app.route('/scripts/main.js')
 def scripts_main_js():
     return render_template('scripts/main.js',
-                           API_URL=os.environ['API_URL'])
+                           API_URL=os.environ.get('API_URL') or 'http://138.2.132.121')
 
 
 if __name__ == '__main__':
