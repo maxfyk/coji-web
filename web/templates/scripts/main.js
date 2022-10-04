@@ -79,16 +79,15 @@ async function scanCode() {
             console.log(text);
 
             var resp = JSON.parse(text);
-            if (resp['error']){
+            if (resp['error']) {
                 alert(resp['text'])
-            }
-            else{
-                window.location.replace('data-preview/${resp[id]}');
+            } else {
+                window.location.replace('data-preview/' + resp['code-id']);
             }
         });
 
-        btnCapture.style.background = "transparent url('/static/icons/scan-button.png') no-repeat top left";
-        btnCapture.style.backgroundSize = "cover";
+    btnCapture.style.background = "transparent url('/static/icons/scan-button.png') no-repeat top left";
+    btnCapture.style.backgroundSize = "cover";
 }
 
 
