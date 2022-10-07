@@ -2,9 +2,9 @@
 <html lang="en">
 <link rel="stylesheet" media="all" href="{{ url_for('static', filename='styles/main.css')}}">
 <body>
-<a class="camera-warning">Please provide camera access!</a>
-<video class="video-preview" id="stream"></video>
-<a class="usage-help">Point your camera at the code and press the scan button!</a>
+<a class="data-preview-text"><b> {{ERROR}} 😢</b></a>
+
+
 <div>
     <div class="add-button-container">
         <div class="button-container">
@@ -14,12 +14,10 @@
     </div>
     <div class="scan-button-container">
         <div class="button-container">
-            <button class="scan-button" id="scan-button"></button>
+            <button class="scan-button" id="scan-button" onclick="window.location.href = '/';"></button>
             <small class="button-description">Scan</small>
         </div>
     </div>
 </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="scripts/main.js"></script>
 </html>
