@@ -26,17 +26,6 @@ body {
     font-size: 3vw;
 }
 
-.data-preview-text {
-    left: 0;
-    line-height: 200px;
-    margin-top: -100px;
-    position: absolute;
-    text-align: center;
-    top: 30%;
-    width: 100%;
-    font-family: Calibri;
-    font-size: 4vh;
-}
 .usage-help {
     left: 0;
     position: absolute;
@@ -102,4 +91,139 @@ body {
     font-family: Calibri;
     font-weight: bold;
     font-size: 200%;
+    -webkit-text-stroke: 0.04vw #FFCC00; /* width and color */
+
+}
+
+/*create-code*/
+.create-code {
+    left: 0;
+    line-height: 200px;
+    margin-top: 4% !important;
+    position: absolute;
+    text-align: center;
+    width: 50%;
+
+    font-family: Calibri;
+}
+
+.main-text {
+    white-space: nowrap;
+    top: 3.6rem;
+    font-size: 500%;
+    width: 100%;
+}
+
+.data-type-form {
+    border-radius: 2rem;
+    height: 4rem;
+    background-color: black;
+    color: #FFCC00;
+    left: 25%;
+    top: 14rem;
+    width: 50%;
+    font-size: 3rem;
+}
+
+.data-create-div {
+    left: 25%;
+    top: 14rem;
+    font-size: 3rem;
+    text-align: center;
+    height: 50rem;
+}
+
+.data-create-submit {
+    left: 25%;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 80%;
+    width: 50%;
+    font-family: Calibri;
+    font-size: 1.8rem;
+}
+
+.sub-data-text {
+    font-family: Calibri;
+    font-size: 3rem;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.sub-data-input {
+    border-radius: 2rem;
+    background-color: black;
+    color: #FFCC00;
+    font-family: Calibri;
+    font-size: 1.8rem;
+    white-space: nowrap;
+    top: 6em;
+    height: 4rem;
+    width: 99%;
+}
+
+.top-logo {
+    width: 100%;
+    height: 100%;
+}
+
+.scan-button-container-create-code {
+    position: fixed;
+    left: 30%;
+    bottom: -2%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
+
+.add-button-container-create-code {
+    position: fixed;
+    left: 50%;
+    bottom: -4%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
+
+.add-button-create-code {
+    display: flex;
+    align-items: center;
+    width: 15vh;
+    height: 15vh;
+    max-height: 20vw;
+    max-width: 20vw;
+
+    background: black url('/static/icons/create-button.png') no-repeat top left;
+    /* Center and scale the image nicely */
+    background-size: cover;
+    border-radius: 50%;
+    border: #FFCC00 0.6vh solid;
+
+}
+
+.scan-button-create-code {
+    display: flex;
+    align-items: center;
+    width: 10vh;
+    height: 10vh;
+    max-height: 15vw;
+    max-width: 15vw;
+
+    background: transparent url('/static/icons/scan-button.png') no-repeat top left;
+    /* Center and scale the image nicely */
+    background-size: cover;
+    border-radius: 50%;
+    border: black 0.6vh solid;
+}
+
+.create-code-form-padding {
+    position: relative;
+}
+
+.form-div {
+    position: relative;
+}
+
+.create-code-buttons {
+    overflow: hidden;
 }

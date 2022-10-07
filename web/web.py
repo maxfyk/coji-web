@@ -1,33 +1,89 @@
 import os
+import io
+import base64
+import validators
 import requests as r
-from flask import Flask, redirect, Response, url_for, render_template
+from flask import (
+    Flask,
+    redirect,
+    request,
+    render_template,
+    send_file
+)
 
 app = Flask(__name__)
 API_URL = os.environ.get('API_URL') or 'http://138.2.132.121'
 
+DATA_TYPES = ['text', 'url']  # , 'file'
 
-@app.route('/')
+
+@app.route('/', methods=['get'])
 def index():
+    """Main page"""
     return render_template('index.html')
 
 
-@app.route('/data-preview/<id>')
+@app.route('/data-preview/<id>', methods=['get'])
 def data_preview(id):
+    """Retrieve the encoded info"""
     resp = r.get(f'{API_URL}/coji-code/get/{id}')
-    code_info = resp.json()['data']
-    if not code_info:
-        return render_template('error-page.html')
-    elif code_info['data-type'] == 'text':
-        return render_template('data-preview-text.html', code_info=code_info)
-    elif code_info['data-type'] == 'url':
-        return redirect(code_info['in-data'])
-    return 'Not yet supported'
+    if not resp.status_code == 200:
+        code_info = resp.json().get('data', None)
+        if not code_info:
+            return render_template('error-page.html', ERROR='Code not found!')
+        elif code_info['data-type'] == 'text':
+            return render_template('data-preview-text.html', code_info=code_info)
+        elif code_info['data-type'] == 'url':
+            return redirect(code_info['in-data'])
+        return 'Not yet supported'
+    return render_template('error-page.html', ERROR='Something went wrong!')
 
+
+@app.route('/create-code', methods=['get'])
+def create_code():
+    """Create a new code"""
+    return render_template('create-code.html', data_types=DATA_TYPES)
+
+
+@app.route('/create-code-submit', methods=['post'])
+def create_code_post():
+    """Create a new code (post form)"""
+    data_type = request.form.get('data-type', None)
+    in_data = request.form.get(f'{data_type}-in', None)
+
+    if data_type and in_data:
+        if data_type == 'url' and validators.url(in_data) or data_type != 'url':
+            in_data = {
+                'in-data': in_data,
+                'data-type': data_type,
+                'style-info': {
+                    'name': 'geom-original',
+                },
+                'user-id': None
+            }
+            resp = r.post(f'{API_URL}/coji-code/create', json=in_data)
+            data = resp.json()
+            if resp.status_code == 200 and not data.get('error'):
+                return render_template('download-code.html', code_image=data['image'])
+            error = data.get('text') or 'Failed create a new code, try again later'
+        else:
+            error = 'You url is not valid!'
+    else:
+        error = 'Wrong values. Please try again!'
+    return render_template('error-page.html', ERROR=error)
+
+
+# static
 
 @app.route('/scripts/main.js')
 def scripts_main_js():
     return render_template('scripts/main.js', API_URL=API_URL)
 
 
+@app.route('/scripts/create-element.js')
+def scripts_create_element_js():
+    return render_template('scripts/create-element.js', API_URL=API_URL)
+
+
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', debug=True)
+    app.run(host='127.0.0.1', port=8000, debug=True)
