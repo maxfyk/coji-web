@@ -13,7 +13,6 @@ from flask import (
 
 app = Flask(__name__)
 API_URL = os.environ.get('API_URL') or 'https://coji-code.com'
-
 DATA_TYPES = ['text', 'url']  # , 'file'
 
 
@@ -27,7 +26,7 @@ def index():
 def data_preview(id):
     """Retrieve the encoded info"""
     resp = r.get(f'{API_URL}/coji-code/get/{id}')
-    if not resp.status_code == 200:
+    if resp.status_code == 200:
         code_info = resp.json().get('data', None)
         if not code_info:
             return render_template('error-page.html', ERROR='Code not found!')
