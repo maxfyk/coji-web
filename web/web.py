@@ -12,7 +12,7 @@ from flask import (
 )
 
 app = Flask(__name__)
-API_URL = os.environ.get('API_URL') or 'http://138.2.132.121'
+API_URL = os.environ.get('API_URL') or 'https://138.2.132.121'
 
 DATA_TYPES = ['text', 'url']  # , 'file'
 
