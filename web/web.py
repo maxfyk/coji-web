@@ -24,9 +24,13 @@ def index():
 @app.route('/data-preview/<id>', methods=['get'])
 def data_preview(id):
     """Retrieve the encoded info"""
-    resp = r.get(f'{API_URL}/coji-code/get/{id}')
-    if resp.status_code == 200:
-        code_info = resp.json().get('data', None)
+    resp = {'data': {'data-type': 'ar-model', 'in-data': {
+        'glb-model-url': 'http://github.com/maxfyk/maxfyk.github.io/raw/master/assets/phoenix.glb',
+        'position': '-2.8 2.35 -3.2', 'scale': '0.01 0.01 0.01'}, 'index': 37, 'style-info': {'name': 'geom-original'},
+                     'time-created': '2022-10-07 09:56:06.391716', 'time-updated': '2022-10-07 09:56:06.391716'},
+            'error': False}
+    if resp:
+        code_info = resp.get('data', None)
         if not code_info:
             return render_template('error-page.html', ERROR='Code not found!')
         elif code_info['data-type'] == 'text':
