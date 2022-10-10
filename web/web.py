@@ -8,10 +8,11 @@ from flask import (
     redirect,
     request,
     render_template,
+    send_file
 )
 
 app = Flask(__name__)
-API_URL = 'http://127.0.0.1:8000'  # os.environ.get('API_URL') or 'https://coji-code.com'
+API_URL = os.environ.get('API_URL') or 'https://coji-code.com'
 DATA_TYPES = ['text', 'url']  # , 'file'
 
 
@@ -25,21 +26,15 @@ def index():
 def data_preview(id):
     """Retrieve the encoded info"""
     resp = r.get(f'{API_URL}/coji-code/get/{id}')
-    print(resp.json())
     if resp.status_code == 200:
         code_info = resp.json().get('data', None)
         if not code_info:
             return render_template('error-page.html', ERROR='Code not found!')
         elif code_info['data-type'] == 'text':
             return render_template('data-preview-text.html', code_info=code_info)
-        elif code_info['data-type'] == 'ar-model':
-            return render_template('data-preview-ar.html', in_data=code_info['in-data'])
         elif code_info['data-type'] == 'url':
             return redirect(code_info['in-data'])
         return 'Not yet supported'
-    elif resp.status_code == 422:
-        return render_template('error-page.html', ERROR='Code not found!')
-
     return render_template('error-page.html', ERROR='Something went wrong!')
 
 
@@ -90,4 +85,4 @@ def scripts_create_element_js():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    app.run(host='127.0.0.1', port=8000, debug=True)

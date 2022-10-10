@@ -227,14 +227,3 @@ body {
 .create-code-buttons {
     overflow: hidden;
 }
-
-/*data-preview */
-.data-preview-text-div {
-    padding-top: 10rem;
-    text-align: center;
-}
-
-.data-preview-text {
-    font-family: Calibri;
-    font-size: 3rem;
-}
