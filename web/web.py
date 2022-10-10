@@ -25,7 +25,7 @@ def index():
 def data_preview(id):
     """Retrieve the encoded info"""
     resp = {'data': {'data-type': 'ar-model', 'in-data': {
-        'glb-model-url': 'http://github.com/maxfyk/maxfyk.github.io/raw/master/assets/phoenix.glb',
+        'glb-model-url': 'https://github.com/maxfyk/maxfyk.github.io/raw/master/assets/phoenix.glb',
         'position': '-2.8 2.35 -3.2', 'scale': '0.01 0.01 0.01'}, 'index': 37, 'style-info': {'name': 'geom-original'},
                      'time-created': '2022-10-07 09:56:06.391716', 'time-updated': '2022-10-07 09:56:06.391716'},
             'error': False}
