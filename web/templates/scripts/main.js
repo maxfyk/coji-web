@@ -5,6 +5,7 @@ if (navigator.mediaDevices.getUserMedia) {
             video.srcObject = stream;
         })
         .catch(function (err0r) {
+            console.log(err0r);
             console.log("Something went wrong with permissions!");
         });
 }
