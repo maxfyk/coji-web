@@ -15,7 +15,6 @@
     <script src="{{ url_for('static', filename='ar-js-static/ar-cursor.js')}}"></script>
     <script src="{{ url_for('static', filename='ar-js-static/main.js')}}"></script>
     <link rel="stylesheet" media="all" href="{{ url_for('static', filename='styles/ar.css')}}">
-    <link rel="stylesheet" media="all" href="{{ url_for('static', filename='styles/main.css')}}">
 </head>
 
 <body>
@@ -63,23 +62,10 @@
 
 <div id="dom-overlay">
     <div id="dom-overlay-message">Enter AR to start.</div>
+
 </div>
 
 <div class="glitchButton" style="position: absolute; top: 1em; right: 1em;"></div>
-<div>
-    <div class="add-button-container">
-        <div class="button-container">
-            <button class="add-button" id="add-button" onclick="window.location.href = '/create-code';"></button>
-            <small class="button-description">Create</small>
-        </div>
-    </div>
-    <div class="scan-button-container">
-        <div class="button-container">
-            <button class="scan-button" id="scan-button"></button>
-            <small class="button-description">Scan</small>
-        </div>
-    </div>
-</div>
 <script src="https://button.glitch.me/button.js"></script>
 </body>
 
