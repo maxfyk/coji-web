@@ -3,6 +3,8 @@ import io
 import base64
 import validators
 import requests as r
+from modules import download_model
+from flask_cors import CORS
 from flask import (
     Flask,
     redirect,
@@ -11,6 +13,7 @@ from flask import (
 )
 
 app = Flask(__name__)
+CORS(app)
 API_URL = os.environ.get('API_URL') or 'https://coji-code.com'
 DATA_TYPES = ['text', 'url']  # , 'file'
 
@@ -24,13 +27,10 @@ def index():
 @app.route('/data-preview/<id>', methods=['get'])
 def data_preview(id):
     """Retrieve the encoded info"""
-    resp = {'data': {'data-type': 'ar-model', 'in-data': {
-        'glb-model-url': 'https://drive.google.com/uc?export=download&id=17owc38i2z9Jv5Y5yHQn0EJ1uTLViG2fq',
-        'position': '-2.8 2.35 -3.2', 'scale': '0.01 0.01 0.01'}, 'index': 37, 'style-info': {'name': 'geom-original'},
-                     'time-created': '2022-10-07 09:56:06.391716', 'time-updated': '2022-10-07 09:56:06.391716'},
-            'error': False}
-    if resp:
-        code_info = resp.get('data', None)
+    resp = r.get(f'{API_URL}/coji-code/get/{id}')
+    if resp.status_code == 200:
+        code_info = resp.json().get('data', None)
+        code_info['glb-model'] = download_model(code_info['in-data']['glb-model-url'])
         if not code_info:
             return render_template('error-page.html', ERROR='Code not found!')
         elif code_info['data-type'] == 'text':
