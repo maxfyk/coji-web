@@ -11,25 +11,6 @@ if (navigator.mediaDevices.getUserMedia) {
             console.log("Something went wrong with permissions!");
         });
 }
-//
-// /*camera preview*/
-// $(function () {
-//     navigator.mediaDevices.getUserMedia({
-//         audio: false,
-//         video: {facingMode: {ideal: 'environment'},}
-//     }, function (stream) {
-//         if ('srcObject' in video) {
-//             video.srcObject = stream;
-//         } else {
-//             video.src = vu.createObjectURL(stream);
-//         }
-//         video.play();
-//     }, function (error) {
-//         if (window.console)
-//             console.error(error);
-//     });
-//
-// });
 
 const headers = {
     'Content-Type': 'application/json',
@@ -52,13 +33,13 @@ async function scanCode() {
     btnCapture.style.backgroundSize = "cover";
     var img = new Image();
     var capture = document.createElement('canvas');
-
+    console.log(stream);
     if (null != stream) {
         var ctx = capture.getContext('2d');
 
         ctx.drawImage(stream, 0, 0, capture.width, capture.height);
     }
-    var base64Img = capture.toDataURL();
+    var base64Img = capture.toDataURL('image/jpeg', 1.0);
 
     var data = {
         'decode-type': 'image',
