@@ -4,15 +4,19 @@ if (navigator.mediaDevices.getUserMedia) {
         .then(function (stream) {
             video.srcObject = stream;
         })
+        .catch(function (err0r) {
+            console.log("Something went wrong with permissions!");
+        });
 }
 
 /*camera preview*/
 $(function () {
     var video = $('body > video')[0];
 
-    navigator.getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
-
-    navigator.getMedia({audio: false, video: {facingMode: {ideal: 'environment'},}}, function (stream) {
+    navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: {facingMode: {ideal: 'environment'},}
+    }, function (stream) {
         if ('srcObject' in video) {
             video.srcObject = stream;
         } else {
