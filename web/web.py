@@ -3,7 +3,6 @@ import io
 import base64
 import validators
 import requests as r
-from modules import download_model
 from flask_cors import CORS
 from flask import (
     Flask,
@@ -30,7 +29,6 @@ def data_preview(id):
     resp = r.get(f'{API_URL}/coji-code/get/{id}')
     if resp.status_code == 200:
         code_info = resp.json().get('data', None)
-        code_info['glb-model'] = download_model(code_info['in-data']['glb-model-url'])
         if not code_info:
             return render_template('error-page.html', ERROR='Code not found!')
         elif code_info['data-type'] == 'text':
