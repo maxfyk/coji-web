@@ -3,6 +3,7 @@ body {
     background-size: cover;
 }
 
+
 .video-preview {
     /* Make video to at least 100% wide and tall */
     /* Center the video */
@@ -30,7 +31,7 @@ body {
     left: 0;
     position: absolute;
     text-align: center;
-    top: 10%;
+    top: 5%;
     width: 100%;
     font-family: Calibri;
     font-size: 3vh;

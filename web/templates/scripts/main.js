@@ -1,35 +1,35 @@
+var video = $('.video-preview')[0];
+
 /*permissions*/
 if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({video: true})
+    navigator.mediaDevices.getUserMedia({video: {facingMode: 'environment'}})
         .then(function (stream) {
             video.srcObject = stream;
+            video.play();
         })
         .catch(function (err0r) {
-            console.log(err0r);
             console.log("Something went wrong with permissions!");
         });
 }
-
-/*camera preview*/
-$(function () {
-    var video = $('body > video')[0];
-
-    navigator.mediaDevices.getUserMedia({
-        audio: false,
-        video: {facingMode: {ideal: 'environment'},}
-    }, function (stream) {
-        if ('srcObject' in video) {
-            video.srcObject = stream;
-        } else {
-            video.src = vu.createObjectURL(stream);
-        }
-        video.play();
-    }, function (error) {
-        if (window.console)
-            console.error(error);
-    });
-
-});
+//
+// /*camera preview*/
+// $(function () {
+//     navigator.mediaDevices.getUserMedia({
+//         audio: false,
+//         video: {facingMode: {ideal: 'environment'},}
+//     }, function (stream) {
+//         if ('srcObject' in video) {
+//             video.srcObject = stream;
+//         } else {
+//             video.src = vu.createObjectURL(stream);
+//         }
+//         video.play();
+//     }, function (error) {
+//         if (window.console)
+//             console.error(error);
+//     });
+//
+// });
 
 const headers = {
     'Content-Type': 'application/json',
