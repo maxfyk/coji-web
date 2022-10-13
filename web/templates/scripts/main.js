@@ -4,9 +4,6 @@ if (navigator.mediaDevices.getUserMedia) {
         .then(function (stream) {
             video.srcObject = stream;
         })
-        .catch(function (err0r) {
-            console.log("Something went wrong with permissions!");
-        });
 }
 
 /*camera preview*/
