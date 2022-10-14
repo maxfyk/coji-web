@@ -1,7 +1,11 @@
 var video = $('.video-preview')[0];
 
+
 /*permissions*/
-if (navigator.mediaDevices.getUserMedia) {
+$(function () {
+    video.setAttribute('autoplay', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
     navigator.mediaDevices.getUserMedia({
         video: {
             facingMode: 'environment',
@@ -17,14 +21,14 @@ if (navigator.mediaDevices.getUserMedia) {
             }
         }
     })
-        .then(function (stream) {
-            video.srcObject = stream;
-            video.play();
-        })
-        .catch(function (err0r) {
-            console.log("Something went wrong with permissions!");
-        });
-}
+    .then(function (stream) {
+        video.srcObject = stream;
+        video.play();
+    })
+    .catch(function (err0r) {
+        console.log("Something went wrong with permissions!");
+    });
+});
 
 const headers = {
     'Content-Type': 'application/json',
