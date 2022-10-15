@@ -50,6 +50,12 @@ def create_code():
     return render_template('create-code.html', data_types=DATA_TYPES)
 
 
+@app.route('/download-code', methods=['get'])
+def create_cod2e():
+    """Create a new code"""
+    return render_template('download-code.html', data_types=DATA_TYPES)
+
+
 @app.route('/create-code-submit', methods=['post'])
 def create_code_post():
     """Create a new code (post form)"""

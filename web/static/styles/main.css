@@ -111,8 +111,8 @@ body {
 .create-code-char-code {
     left: 0;
     line-height: 200px;
-    margin-top: 12% !important;
-    font-size: 300% !important;
+    margin-top: -2% !important;
+    font-size: 200% !important;
     position: absolute;
     text-align: center;
     width: 50%;
