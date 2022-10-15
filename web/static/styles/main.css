@@ -108,6 +108,18 @@ body {
     font-family: Calibri;
 }
 
+.create-code-char-code {
+    left: 0;
+    line-height: 200px;
+    margin-top: 12% !important;
+    font-size: 300% !important;
+    position: absolute;
+    text-align: center;
+    width: 50%;
+
+    font-family: Calibri;
+}
+
 .main-text {
     white-space: nowrap;
     top: 3.6rem;

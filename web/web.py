@@ -69,7 +69,7 @@ def create_code_post():
             resp = r.post(f'{API_URL}/coji-code/create', json=in_data)
             data = resp.json()
             if resp.status_code == 200 and not data.get('error'):
-                return render_template('download-code.html', code_image=data['image'])
+                return render_template('download-code.html', code_image=data['image'], char_code=data['char_code'])
             error = data.get('text') or 'Failed create a new code, try again later'
         else:
             error = 'You url is not valid!'
