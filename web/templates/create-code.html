@@ -5,29 +5,29 @@
 <div class="form-div">
     <form action="{{ url_for('create_code_post') }}" method="post">
         <div class="create-code-form-padding">
-
             <b class="main-text create-code">Create your code:</b>
-            <select id="data-type" name="data-type" method="GET" action="/" class="create-code data-type-form">
-                {% for data_type in data_types %}
-                <option value="{{data_type}}" SELECTED>{{data_type}}</option>
-                {% endfor %}
-                <option disabled value>ar model</option>
-                <option disabled selected value>Select data type:</option>
-            </select>
-            <div id="text-div" hidden class="create-code data-create-div">
-                <a class="create-code sub-data-text">Enter your text:</a>
-                <input class="create-code sub-data-input" type="text" id="text-in" name="text-in"
-                       minlength="1" maxlength="10000" placeholder="Type here!"/>
+            <div>
+                <select id="data-type" name="data-type" method="GET" action="/" class="create-code data-type-form">
+                    {% for data_type in data_types %}
+                    <option value="{{data_type}}" SELECTED>{{data_type}}</option>
+                    {% endfor %}
+                    <option disabled value>ar model</option>
+                    <option disabled selected value>Select data type:</option>
+                </select>
             </div>
-            <div id="url-div" hidden class="create-code data-create-div">
-                <a class="create-code sub-data-text">Enter your url:</a>
-                <input class="create-code sub-data-input" type="text" id="url-in" name="url-in"
-                       minlength="1" maxlength="1000" placeholder="Type here!"/>
-            </div>
-            <div id="file-div" hidden class="create-code data-create-div">
-                <a class="create-code sub-data-text">Select your file:</a>
-                <input class="create-code sub-data-input" type="file" id="file-in" name="file-in"
-                       accept="image/*, audio/*, video/*, text/*, application/*" placeholder="Click here!">
+            <div>
+                <div id="text-div" hidden class="create-code data-create-div">
+                    <input class="create-code sub-data-input" type="text" id="text-in" name="text-in"
+                           minlength="1" maxlength="10000" placeholder="Enter your text:"/>
+                </div>
+                <div id="url-div" hidden class="create-code data-create-div">
+                    <input class="create-code sub-data-input" type="text" id="url-in" name="url-in"
+                           minlength="1" maxlength="1000" placeholder="Enter your url:"/>
+                </div>
+                <div id="file-div" hidden class="create-code data-create-div">
+                    <input class="create-code sub-data-input" type="file" id="file-in" name="file-in"
+                           accept="image/*, audio/*, video/*, text/*, application/*" placeholder="Select your file:">
+                </div>
             </div>
         </div>
 
@@ -51,5 +51,5 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="scripts/create-element.js"></script>
+<script src="{{ url_for('static', filename='js-static/create-element.js')}}"></script>
 </html>

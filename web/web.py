@@ -50,6 +50,12 @@ def create_code():
     return render_template('create-code.html', data_types=DATA_TYPES)
 
 
+@app.route('/modify-code', methods=['get'])
+def modify_code():
+    """Change code's information"""
+    return render_template('modify-code.html', data_types=DATA_TYPES)
+
+
 @app.route('/download-code', methods=['get'])
 def create_cod2e():
     """Create a new code"""
@@ -84,16 +90,41 @@ def create_code_post():
     return render_template('error-page.html', ERROR=error)
 
 
+@app.route('/modify-code-submit', methods=['post'])
+def modify_code_post():
+    """Modify code's info( post form)"""
+    data_type = request.form.get('data-type', None)
+    in_data = request.form.get(f'{data_type}-in', None)
+    code = request.form.get('code-in', None)
+
+    if data_type and in_data and code:
+        if data_type == 'url' and validators.url(in_data) or data_type != 'url':
+            in_data = {
+                'in-data': in_data,
+                'data-type': data_type,
+                'code-id': code,
+                'style-info': {
+                    'name': 'geom-original',
+                },
+                'user-id': None
+            }
+            resp = r.post(f'{API_URL}/coji-code/update', json=in_data)
+            data = resp.json()
+            if resp.status_code == 200 and not data.get('error'):
+                return render_template('success-page.html')
+            error = data.get('text') or 'Failed to modify your code, try again later'
+        else:
+            error = 'You url is not valid!'
+    else:
+        error = 'Wrong values. Please try again!'
+    return render_template('error-page.html', ERROR=error)
+
+
 # static
 
 @app.route('/scripts/main.js')
 def scripts_main_js():
     return render_template('scripts/main.js', API_URL=API_URL)
-
-
-@app.route('/scripts/create-element.js')
-def scripts_create_element_js():
-    return render_template('scripts/create-element.js', API_URL=API_URL)
 
 
 if __name__ == '__main__':
