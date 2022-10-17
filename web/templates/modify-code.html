@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" media="all" href="{{ url_for('static', filename='styles/main.css')}}">
+<body>
+<div class="form-div">
+    <form action="{{ url_for('create_code_post') }}" method="post">
+        <div class="create-code-form-padding">
+
+            <b class="main-text create-code">Modify your code:</b>
+            <select id="data-type" name="data-type" method="GET" action="/" class="create-code data-type-form">
+                {% for data_type in data_types %}
+                <option value="{{data_type}}" SELECTED>{{data_type}}</option>
+                {% endfor %}
+                <option disabled value>ar model</option>
+                <option disabled selected value>Select data type:</option>
+            </select>
+            <div id="text-div" hidden class="create-code data-create-div">
+                <input class="create-code sub-data-input" type="text" id="text-in" name="text-in"
+                       minlength="1" maxlength="10000" placeholder="Enter your text:"/>
+            </div>
+            <div id="url-div" hidden class="create-code data-create-div">
+                <input class="create-code sub-data-input" type="text" id="url-in" name="url-in"
+                       minlength="1" maxlength="1000" placeholder="Enter your url:"/>
+            </div>
+            <div id="file-div" hidden class="create-code data-create-div">
+                <input class="create-code sub-data-input" type="file" id="file-in" name="file-in"
+                       accept="image/*, audio/*, video/*, text/*, application/*" placeholder="Select your file:">
+            </div>
+        </div>
+        <div id="code-id-div" hidden class="create-code code-id-div">
+            <input class="create-code sub-data-input" type="text" id="cod-in" name="cod-in"
+                   minlength="16" maxlength="16" placeholder="Enter the code you wanna modify:"/>
+        </div>
+        <div class="create-code-buttons">
+            <div class="scan-button-container-create-code">
+                <div class="button-container">
+                    <button class="scan-button-create-code" id="scan-button"
+                            onclick="window.location.href = '/';" type="button"></button>
+                    <small class="button-description">Scan</small>
+                </div>
+            </div>
+            <div class="add-button-container-create-code">
+                <div class="button-container">
+                    <button class="add-button-create-code" id="modify-button" type="submit"></button>
+                    <small class="button-description">Submit</small>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="{{ url_for('static', filename='js-static/modify-code.js')}}"></script>
+</html>

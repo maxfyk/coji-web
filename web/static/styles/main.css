@@ -3,6 +3,10 @@ body {
     background-size: cover;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #FFCC00;
+    opacity: 1; /* Firefox */
+}
 
 .video-preview {
     /* Make video to at least 100% wide and tall */
@@ -51,6 +55,29 @@ body {
     bottom: -2%;
     transform: translate(-50%, -50%);
     margin: 0 auto;
+}
+
+.modify-button-container {
+    position: fixed;
+    left: 15%;
+    bottom: -1.3%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
+
+.modify-button {
+    display: flex;
+    align-items: center;
+    width: 6vh;
+    height: 6vh;
+    max-height: 12vw;
+    max-width: 12vw;
+
+    background: black url('/static/icons/modify-button.png') no-repeat top left;
+    /* Center and scale the image nicely */
+    background-size: cover;
+    border-radius: 50%;
+    border: #FFCC00 0.6vh solid;
 }
 
 .scan-button {
@@ -140,7 +167,27 @@ body {
 
 .data-create-div {
     left: 25%;
-    top: 14rem;
+    top: 18rem;
+    font-size: 3rem;
+    text-align: center;
+    height: 50rem;
+}
+
+
+.sub-data-input {
+    border-radius: 2rem;
+    background-color: black;
+    color: #FFCC00;
+    font-family: Calibri;
+    font-size: 1.8rem;
+    white-space: nowrap;
+    height: 4rem;
+    width: 99%;
+}
+
+.code-id-div {
+    left: 25%;
+    top: 24.2rem;
     font-size: 3rem;
     text-align: center;
     height: 50rem;
@@ -156,25 +203,6 @@ body {
     width: 50%;
     font-family: Calibri;
     font-size: 1.8rem;
-}
-
-.sub-data-text {
-    font-family: Calibri;
-    font-size: 3rem;
-    width: 100%;
-    white-space: nowrap;
-}
-
-.sub-data-input {
-    border-radius: 2rem;
-    background-color: black;
-    color: #FFCC00;
-    font-family: Calibri;
-    font-size: 1.8rem;
-    white-space: nowrap;
-    top: 6em;
-    height: 4rem;
-    width: 99%;
 }
 
 .top-logo {
