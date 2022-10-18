@@ -80,7 +80,7 @@ body {
     /* Center and scale the image nicely */
     background-size: cover;
     border-radius: 50%;
-    border: #FFCC00 0.6vh solid;
+    border: #FFCC00 0.5vh solid;
 }
 
 .keyboard-decode-button-container {
@@ -111,7 +111,7 @@ body {
     /* Center and scale the image nicely */
     background-size: cover;
     border-radius: 50%;
-    border: #FFCC00 0.6vh solid;
+    border: #FFCC00 0.4vh solid;
 }
 
 .modify-button-container {
@@ -134,7 +134,7 @@ body {
     /* Center and scale the image nicely */
     background-size: cover;
     border-radius: 50%;
-    border: #FFCC00 0.6vh solid;
+    border: #FFCC00 0.4vh solid;
 }
 
 .scan-button-container {
@@ -172,7 +172,7 @@ body {
     /* Center and scale the image nicely */
     background-size: cover;
     border-radius: 50%;
-    border: #FFCC00 0.6vh solid;
+    border: #FFCC00 0.5vh solid;
 }
 
 .add-button-container {
@@ -326,7 +326,7 @@ body {
     /* Center and scale the image nicely */
     background-size: cover;
     border-radius: 50%;
-    border: #1a1a1a 0.6vh solid;
+    border: #1a1a1a 0.5vh solid;
 }
 
 .create-code-form-padding {
