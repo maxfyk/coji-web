@@ -21,13 +21,13 @@ $(function () {
             }
         }
     })
-    .then(function (stream) {
-        video.srcObject = stream;
-        video.play();
-    })
-    .catch(function (err0r) {
-        console.log("Something went wrong with permissions!");
-    });
+        .then(function (stream) {
+            video.srcObject = stream;
+            video.play();
+        })
+        .catch(function (err0r) {
+            console.log("Something went wrong with permissions!");
+        });
 });
 
 const headers = {
@@ -59,7 +59,14 @@ async function scanCode() {
         ctx.drawImage(stream, 0, 0, stream.videoWidth, stream.videoHeight);
     }
     var base64Img = capture.toDataURL('image/jpeg', 1).replace('data:image/jpeg;base64,', '');
-
+    var data = {
+        'decode-type': 'image',
+        'in-data': base64Img,
+        'user-id': null,
+        'style-info': {
+            'name': 'geom-original',
+        }
+    }
     await fetch(`{{API_URL}}/coji-code/decode`, options = {
         method: "POST", body: JSON.stringify(data), headers: headers,
     })
