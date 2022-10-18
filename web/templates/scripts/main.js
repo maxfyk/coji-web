@@ -1,16 +1,23 @@
 var video = $('.video-preview')[0];
 
+
 /*permissions*/
 $(function () {
     video.setAttribute('autoplay', '');
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
-    navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
     navigator.mediaDevices.getUserMedia({
         video: {
-            facingMode: 'environment', width: {
-                optional: [{minWidth: 320}, {minWidth: 640}, {minWidth: 1024}, {minWidth: 1280}, {minWidth: 1920}, {minWidth: 2560},]
+            facingMode: 'environment',
+            width: {
+                optional: [
+                    {minWidth: 320},
+                    {minWidth: 640},
+                    {minWidth: 1024},
+                    {minWidth: 1280},
+                    {minWidth: 1920},
+                    {minWidth: 2560},
+                ]
             }
         }
     })
@@ -53,7 +60,10 @@ async function scanCode() {
     }
     var base64Img = capture.toDataURL('image/jpeg', 1).replace('data:image/jpeg;base64,', '');
     var data = {
-        'decode-type': 'image', 'in-data': base64Img, 'user-id': null, 'style-info': {
+        'decode-type': 'image',
+        'in-data': base64Img,
+        'user-id': null,
+        'style-info': {
             'name': 'geom-original',
         }
     }
