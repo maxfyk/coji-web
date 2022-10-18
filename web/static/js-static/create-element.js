@@ -8,6 +8,7 @@ $(document).ready(function () {
         var id = $(this).val();
         var el = $('#' + id + '-div');
         el.show();
+        $('#code-location-div').show();
         $('html').animate({scrollTop: el.offset().top},500);
         // hide previously showed element
         if (current_element != '') $('#' + current_element).hide();
