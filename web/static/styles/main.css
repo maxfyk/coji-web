@@ -188,11 +188,10 @@ body {
     text-align: center;
     padding-top: 5px;
     display: inline-block;
-    color: #1a1a1a;
+        color: #1a1a1a;
     font-family: Calibri;
     font-weight: bold;
     font-size: 240%;
-    -webkit-text-stroke: 0.01vw #FFCC00; /* width and color */
 
 }
 
