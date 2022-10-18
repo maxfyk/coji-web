@@ -56,6 +56,36 @@ def modify_code():
     return render_template('modify-code.html', data_types=DATA_TYPES)
 
 
+@app.route('/keyboard-decode', methods=['get'])
+def keyboard_decode():
+    """Decode using keyboard"""
+    return render_template('keyboard-decode.html')
+
+
+@app.route('/keyboard-decode-post', methods=['post'])
+def keyboard_decode_post():
+    """Decode using keyboard (post)"""
+    code_in = request.form.get('keyboard-decode-in', None)
+
+    if code_in:
+        in_data = {
+            'decode-type': 'keyboard',
+            'in-data': code_in,
+            'user-id': None,
+            'style-info': {
+                'name': 'geom-original',
+            }
+        }
+        resp = r.post(f'{API_URL}/coji-code/decode', json=in_data)
+        data = resp.json()
+        if resp.status_code == 200 and not data.get('error'):
+            return redirect('data-preview/' + data['code-id'], code=302)
+        error = data.get('text') or 'Failed to decode your code, please try again later!'
+    else:
+        error = 'Please enter the code first!'
+    return render_template('error-page.html', ERROR=error)
+
+
 @app.route('/download-code', methods=['get'])
 def create_cod2e():
     """Create a new code"""
