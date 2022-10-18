@@ -86,10 +86,10 @@ def keyboard_decode_post():
     return render_template('error-page.html', ERROR=error)
 
 
-@app.route('/download-code', methods=['get'])
-def create_cod2e():
-    """Create a new code"""
-    return render_template('download-code.html', data_types=DATA_TYPES)
+@app.route('/location-decode', methods=['get'])
+def location_decode():
+    """Dummy map with codes"""
+    return render_template('location-decode.html')
 
 
 @app.route('/create-code-submit', methods=['post'])
