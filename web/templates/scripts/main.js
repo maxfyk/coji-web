@@ -1,15 +1,13 @@
 var video = $('.video-preview')[0];
 
-function ChooseGetUserMedia() {
-    return navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-}
-
 /*permissions*/
 $(function () {
     video.setAttribute('autoplay', '');
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
-    ChooseGetUserMedia()({
+    navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+    navigator.mediaDevices.getUserMedia({
         video: {
             facingMode: 'environment', width: {
                 optional: [{minWidth: 320}, {minWidth: 640}, {minWidth: 1024}, {minWidth: 1280}, {minWidth: 1920}, {minWidth: 2560},]
