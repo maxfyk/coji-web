@@ -9,6 +9,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Calibri';
+    src: url('/static/fonts/calibri/calibri-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body {
     background: #FFCC00 no-repeat center center; /* add error background for camera */
     background-size: cover;
@@ -184,8 +191,8 @@ body {
     color: #1a1a1a;
     font-family: Calibri;
     font-weight: bold;
-    font-size: 200%;
-    /*-webkit-text-stroke: 0.04vw #FFCC00; /* width and color */
+    font-size: 240%;
+    -webkit-text-stroke: 0.01vw #FFCC00; /* width and color */
 
 }
 
