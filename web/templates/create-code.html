@@ -9,10 +9,10 @@
             <div>
                 <select id="data-type" name="data-type" method="GET" action="/" class="create-code data-type-form">
                     {% for data_type in data_types %}
-                    <option value="{{data_type}}" SELECTED>{{data_type}}</option>
+                    <option value="{{data_type}}" class="dropdown-options" SELECTED>{{data_type}}</option>
                     {% endfor %}
-                    <option disabled value>ar model</option>
-                    <option disabled selected value>Select data type:</option>
+                    <option disabled value class="dropdown-options">ar model</option>
+                    <option disabled selected class="dropdown-options" value>Select data type:</option>
                 </select>
             </div>
             <div>
