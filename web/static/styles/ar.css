@@ -26,7 +26,7 @@ body {
 .a-enter-vr-button, .a-enter-ar-button {
     margin-bottom: -2.5%;
     background-color: #FFCC00;
-    color: black; /* add error background for camera */
+    color: #1a1a1a; /* add error background for camera */
 
 }
 
