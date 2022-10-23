@@ -67,7 +67,7 @@ async function scanCode() {
             'name': 'geom-original',
         }
     }
-    await fetch(`{{API_URL}}/coji-code/decode/`, options = {
+    await fetch(`{{API_URL}}/coji-code/decode`, options = {
         method: "POST", body: JSON.stringify(data), headers: headers,
     })
         .then(await function (response) {
