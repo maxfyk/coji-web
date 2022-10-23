@@ -62,3 +62,4 @@ window.addEventListener("DOMContentLoaded", function() {
     message.textContent = "Exited Immersive Mode";
   });
 });
+

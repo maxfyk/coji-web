@@ -9,7 +9,7 @@ $(document).ready(function () {
         var el = $('#' + id + '-div');
         el.show();
         $('#code-location-div').show();
-        $('html').animate({scrollTop: el.offset().top},500);
+        $('html').animate({scrollTop: el.offset().top}, 500);
         // hide previously showed element
         if (current_element != '') $('#' + current_element).hide();
 
@@ -17,3 +17,13 @@ $(document).ready(function () {
         current_element = id + '-div'
     });
 });
+
+
+function insert_piece(letter) {
+    document.getElementById('keyboard-decode-in').value += letter;
+}
+
+function remove_last() {
+    var in_str = document.getElementById('keyboard-decode-in').value;
+    document.getElementById('keyboard-decode-in').value = in_str.substr(0, in_str.length - 1);
+}

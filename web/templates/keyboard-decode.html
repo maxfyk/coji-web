@@ -18,37 +18,80 @@
         </div>
         <div class="keyboard-div">
             <div class="keyboard-row">
-                <div class="piece-button">
-                    <a class="piece-text">A</a>
-                    <img class="keyboard-piece-icon"
-                         style="background-image: url('/static/icons/geom-original/circle.png')"/>
+                <div class="piece-button" onclick="insert_piece('a')">A
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/circle.png">
                 </div>
-                <div class="piece-button">B</div>
-                <div class="piece-button">C</div>
-                <div class="piece-button">D</div>
+                <div class="piece-button" onclick="insert_piece('b')">B
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/d-arrow.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('c')">C
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/e-circle.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('d')">D
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/e-rhombus.png">
+                </div>
+                <div class="piece-button" onclick="remove_last()">DELETE
+                    <a style="color: #FFCC00; font-size: 220%;"><-</a>
+                </div>
             </div>
-            <div class="row-break"></div>
             <div class="keyboard-row">
-                <div class="piece-button">E</div>
-                <div class="piece-button">F</div>
-                <div class="piece-button">G</div>
-                <div class="piece-button">H</div>
+                <div class="piece-button" onclick="insert_piece('e')">E
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/e-square.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('f')">F
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/e-triangle.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('g')">G
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/l-arrow.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('h')">H
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/minus.png">
+                </div>
             </div>
-            <div class="row-break"></div>
+            <div class="keyboard-row">
+                <div class="piece-button" onclick="insert_piece('i')">I
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/plus.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('j')">J
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/r-arrow.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('k')">K
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/rhombus.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('l')">L
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/square.png">
+                </div>
+            </div>
+            <div class="keyboard-row">
+                <div class="piece-button" onclick="insert_piece('m')">M
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/triangle.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('n')">N
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/u-arrow.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('o')">O
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/v-bar.png">
+                </div>
+                <div class="piece-button" onclick="insert_piece('p')">P
+                    </br><img class="keyboard-piece-icon"
+                              src="/static/icons/geom-original/x.png">
 
-            <div class="keyboard-row">
-                <div class="piece-button">I</div>
-                <div class="piece-button">J</div>
-                <div class="piece-button">K</div>
-                <div class="piece-button">L</div>
-            </div>
-            <div class="row-break"></div>
-
-            <div class="keyboard-row">
-                <div class="piece-button">M</div>
-                <div class="piece-button">N</div>
-                <div class="piece-button">O</div>
-                <div class="piece-button">P</div>
+                </div>
             </div>
         </div>
         <div class="create-code-buttons">
