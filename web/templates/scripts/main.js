@@ -44,52 +44,49 @@ document.getElementById("scan-button").addEventListener("click", function () {
 
 
 async function scanCode() {
-    try {
-        var stream = document.getElementById("stream");
-        var btnCapture = document.getElementById("scan-button");
+    var stream = document.getElementById("stream");
+    var btnCapture = document.getElementById("scan-button");
 
-        btnCapture.style.background = "transparent url('/static/icons/scan-loading.gif') no-repeat top left";
-        btnCapture.style.backgroundSize = "cover";
-        var capture = document.createElement('canvas');
+    btnCapture.style.background = "transparent url('/static/icons/scan-loading.gif') no-repeat top left";
+    btnCapture.style.backgroundSize = "cover";
+    var capture = document.createElement('canvas');
 
-        if (null != stream) {
-            capture.width = stream.videoWidth;
-            capture.height = stream.videoHeight;
-            var ctx = capture.getContext('2d');
+    if (null != stream) {
+        capture.width = stream.videoWidth;
+        capture.height = stream.videoHeight;
+        var ctx = capture.getContext('2d');
 
-            ctx.drawImage(stream, 0, 0, stream.videoWidth, stream.videoHeight);
-        }
-        var base64Img = capture.toDataURL('image/jpeg', 1).replace('data:image/jpeg;base64,', '');
-        var data = {
-            'decode-type': 'image',
-            'in-data': base64Img,
-            'user-id': null,
-            'style-info': {
-                'name': 'geom-original',
-            }
-        }
-        await fetch(`{{API_URL}}/coji-code/decode`, options = {
-            method: "POST", body: JSON.stringify(data), headers: headers,
-        })
-            .then(await function (response) {
-                return response.text();
-            }).then(await function (text) {
-                btnCapture.style.background = "transparent url('/static/icons/scan-button.png') no-repeat top left";
-                btnCapture.style.backgroundSize = "cover";
-
-                var resp = JSON.parse(text);
-                if (resp['error']) {
-                    alert(resp['text'])
-                } else {
-                    window.location.replace('data-preview/' + resp['code-id']);
-                }
-            });
-
-        btnCapture.style.background = "transparent url('/static/icons/scan-button.png') no-repeat top left";
-        btnCapture.style.backgroundSize = "cover";
-    } catch (e) {
-        alert(e.stack);
+        ctx.drawImage(stream, 0, 0, stream.videoWidth, stream.videoHeight);
     }
+    var base64Img = capture.toDataURL('image/jpeg', 1).replace('data:image/jpeg;base64,', '');
+    var data = {
+        'decode-type': 'image',
+        'in-data': base64Img,
+        'user-id': null,
+        'style-info': {
+            'name': 'geom-original',
+        }
+    }
+    await fetch(`{{API_URL}}/coji-code/decode/`, options = {
+        method: "POST", body: JSON.stringify(data), headers: headers,
+    })
+        .then(await function (response) {
+            return response.text();
+        }).then(await function (text) {
+            btnCapture.style.background = "transparent url('/static/icons/scan-button.png') no-repeat top left";
+            btnCapture.style.backgroundSize = "cover";
+
+            var resp = JSON.parse(text);
+            if (resp['error']) {
+                alert(resp['text'])
+            } else {
+                window.location.replace('data-preview/' + resp['code-id']);
+            }
+        });
+
+    btnCapture.style.background = "transparent url('/static/icons/scan-button.png') no-repeat top left";
+    btnCapture.style.backgroundSize = "cover";
+
 }
 
 // async function scanAutoCron() {
