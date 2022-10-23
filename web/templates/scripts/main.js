@@ -32,9 +32,6 @@ $(function () {
 
 const headers = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-    'Access-Control-Request-Method': 'GET, POST, DELETE, PUT, OPTIONS',
 };
 
 /*Scan button*/
@@ -68,7 +65,7 @@ async function scanCode() {
         }
     }
     await fetch(`{{API_URL}}/coji-code/decode`, options = {
-        method: "POST", body: JSON.stringify(data), headers: headers,
+        method: "POST", body: JSON.stringify(data), headers: headers, mode: 'cors'
     })
         .then(await function (response) {
             return response.text();
