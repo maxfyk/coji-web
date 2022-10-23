@@ -354,9 +354,13 @@ body {
 
 /*keyboard-decode*/
 
+.keyboard-div {
+    padding-top: 6rem;
+}
+
 .keyboard-decode-div {
     left: 25%;
-    margin-top: 54rem;
+    padding-top: 2rem;
     font-size: 3rem;
     text-align: center;
 }
