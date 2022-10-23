@@ -26,7 +26,7 @@ $(function () {
             video.play();
         })
         .catch(function (err0r) {
-            alert(err0r);
+            alert('HEllO' + err0r);
             console.log("Something went wrong with permissions!");
         });
 });
@@ -41,7 +41,7 @@ const headers = {
 /*Scan button*/
 document.getElementById("scan-button").addEventListener("click", function () {
     scanCode().catch(function (err0r) {
-        alert(err0r);
+        alert('HEllO !2' + err0r);
     });
 });
 
