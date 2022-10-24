@@ -354,10 +354,50 @@ body {
 
 /*keyboard-decode*/
 
+.keyboard-div {
+    padding-top: 6rem;
+}
+
 .keyboard-decode-div {
     left: 25%;
-    top: 54rem;
+    padding-top: 2rem;
     font-size: 3rem;
     text-align: center;
-    height: 50rem;
+}
+
+.keyboard-div {
+    touch-action: manipulation;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+    /*top: 80%;*/
+    margin-top: 16%;
+    margin-left: 19%;
+    width: 800px;
+}
+
+.keyboard-row {
+    height: 170px;
+
+}
+
+.piece-button {
+    float: left;
+    margin-left: 2rem;
+    font-family: Calibri;
+    text-align: center;
+    width: 110px;
+    height: 140px;
+    background-color: #1a1a1a;
+    border-radius: 1.4rem;
+    color: #FFCC00;
+    font-size: 2rem;
+}
+
+.keyboard-piece-icon {
+    width: 90px;
+    height: 90px;
 }
