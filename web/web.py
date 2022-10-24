@@ -129,7 +129,7 @@ def send_image_decode_request():
         method=request.method,
         url=f'{API_URL}/coji-code/decode',
         headers={key: value for (key, value) in request.headers if key != 'Host'},
-        data=request.get_data(),
+        data=request.json,
         cookies=request.cookies,
         allow_redirects=False)
 
