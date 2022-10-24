@@ -125,7 +125,7 @@ def create_code_post():
 @app.route('/image-decode-request', methods=['post'])
 def send_image_decode_request():
     """Forward request to api"""
-    resp = requests.post(f'{API_URL}/coji-code/decode', json=request.json)
+    resp = requests.post(f'{API_URL}/coji-code/decode', json=request.get_data())
     return Response(resp.content, resp.status_code)
 
 
