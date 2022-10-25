@@ -13,6 +13,7 @@ CREATE_POST_JSON = {
     'in-data': None,
     'data-type': None,
     'user-id': None,
+    'location': None,
     'style-info': {
         'name': DEFAULT_STYLE,
     },

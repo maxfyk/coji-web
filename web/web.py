@@ -97,6 +97,7 @@ def keyboard_decode_post():
 def create_code_post():
     """Create a new code (post form)"""
     data_type = request.form.get('data-type', None)
+    location = request.form.get('location-in', None)
     in_data = request.form.get(f'{data_type}-in', None)
 
     if data_type and in_data:
@@ -104,6 +105,7 @@ def create_code_post():
             in_data = CREATE_POST_JSON.copy()
             in_data['in-data'] = in_data
             in_data['data-type'] = data_type
+            in_data['location'] = location
             resp = r.post(f'{API_URL}/coji-code/create', json=in_data)
             data = resp.json()
             if resp.status_code == 200 and not data.get('error'):
