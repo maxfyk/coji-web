@@ -121,20 +121,8 @@ def create_code_post():
 @app.route('/image-decode-request', methods=['post'])
 def send_image_decode_request():
     """Forward request to api"""
-    resp = requests.request(
-        method=request.method,
-        url=f'{API_URL}/coji-code/decode',
-        headers={key: value for (key, value) in request.headers if key != 'Host'},
-        data=request.get_data(),
-        cookies=request.cookies,
-        allow_redirects=False)
-
-    excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection']
-    headers = [(name, value) for (name, value) in resp.raw.headers.items()
-               if name.lower() not in excluded_headers]
-
-    response = Response(resp.content, resp.status_code, headers)
-    return response
+    resp = requests.post(f'{API_URL}/coji-code/decode', json=request.get_json())
+    return Response(resp.content, resp.status_code)
 
 
 @app.route('/modify-code-submit', methods=['post'])
