@@ -1,17 +1,12 @@
 import os
-import io
-import base64
-import validators
-import requests as r
-from flask_cors import CORS
+
 import requests
-from flask import (
-    Flask,
-    redirect,
-    request,
-    render_template,
-    Response
-)
+import requests as r
+import validators
+from flask import (Flask, Response, redirect, render_template, request)
+from flask_cors import CORS
+
+from static.constants import *
 
 app = Flask(__name__)
 CORS(app)
@@ -19,12 +14,15 @@ API_URL = os.environ.get('API_URL') or 'https://coji-code.com'
 DATA_TYPES = ['text', 'url']  # , 'file'
 
 
+# GET pages
+# main page
 @app.route('/', methods=['get'])
 def index():
     """Main page"""
     return render_template('index.html')
 
 
+# data preview page
 @app.route('/data-preview/<id>', methods=['get'])
 def data_preview(id):
     """Retrieve the encoded info"""
@@ -46,38 +44,45 @@ def data_preview(id):
     return render_template('error-page.html', ERROR='Something went wrong!')
 
 
+# create code page
 @app.route('/create-code', methods=['get'])
 def create_code():
     """Create a new code"""
     return render_template('create-code.html', data_types=DATA_TYPES)
 
 
+# modify code page
 @app.route('/modify-code', methods=['get'])
 def modify_code():
     """Change code's information"""
     return render_template('modify-code.html', data_types=DATA_TYPES)
 
 
+# map location page
+@app.route('/location-decode', methods=['get'])
+def location_decode():
+    """Dummy map with codes"""
+    return render_template('location-decode.html')
+
+
+# keyboard decode page
 @app.route('/keyboard-decode', methods=['get'])
 def keyboard_decode():
     """Decode using keyboard"""
     return render_template('keyboard-decode.html')
 
 
+# POST pages
 @app.route('/keyboard-decode-post', methods=['post'])
 def keyboard_decode_post():
     """Decode using keyboard (post)"""
     code_in = request.form.get('keyboard-decode-in', None)
 
     if code_in:
-        in_data = {
-            'decode-type': 'keyboard',
-            'in-data': code_in,
-            'user-id': None,
-            'style-info': {
-                'name': 'geom-original',
-            }
-        }
+        in_data = DECODE_POST_JSON.copy()
+        in_data['decode-type'] = 'keyboard'
+        in_data['in-data'] = code_in
+
         resp = r.post(f'{API_URL}/coji-code/decode', json=in_data)
         data = resp.json()
         if resp.status_code == 200 and not data.get('error'):
@@ -88,12 +93,6 @@ def keyboard_decode_post():
     return render_template('error-page.html', ERROR=error)
 
 
-@app.route('/location-decode', methods=['get'])
-def location_decode():
-    """Dummy map with codes"""
-    return render_template('location-decode.html')
-
-
 @app.route('/create-code-submit', methods=['post'])
 def create_code_post():
     """Create a new code (post form)"""
@@ -102,14 +101,9 @@ def create_code_post():
 
     if data_type and in_data:
         if data_type == 'url' and validators.url(in_data) or data_type != 'url':
-            in_data = {
-                'in-data': in_data,
-                'data-type': data_type,
-                'style-info': {
-                    'name': 'geom-original',
-                },
-                'user-id': None
-            }
+            in_data = CREATE_POST_JSON.copy()
+            in_data['in-data'] = in_data
+            in_data['data-type'] = data_type
             resp = r.post(f'{API_URL}/coji-code/create', json=in_data)
             data = resp.json()
             if resp.status_code == 200 and not data.get('error'):
