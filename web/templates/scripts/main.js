@@ -34,6 +34,24 @@ const headers = {
     'Content-Type': 'application/json',
 };
 
+function location_redirector() {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        window.location.href = '/location-decode/' + position.coords.latitude + ',' + position.coords.longitude;
+        return 0;
+    }, showError);
+}
+
+function showError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            alert('Please grant access to your location!');
+            break;
+        case error.UNKNOWN_ERROR:
+            alert('Please grant access to your location!');
+            break;
+    }
+}
+
 /*Scan button*/
 document.getElementById("scan-button").addEventListener("click", function () {
     scanCode();
