@@ -3,6 +3,7 @@ var video = $('.video-preview')[0];
 
 /*permissions*/
 $(function () {
+
     video.setAttribute('autoplay', '');
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
@@ -28,6 +29,7 @@ $(function () {
         .catch(function (err0r) {
             console.log("Something went wrong with permissions!");
         });
+    navigator.geolocation.getCurrentPosition(function (position) {}, showError);
 });
 
 const headers = {
