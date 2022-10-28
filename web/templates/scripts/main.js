@@ -27,7 +27,8 @@ $(function () {
         .catch(function (err0r) {
             console.log("Something went wrong with permissions!");
         });
-    navigator.geolocation.getCurrentPosition(function (position) {}, showError);
+    navigator.geolocation.getCurrentPosition(function (position) {
+    }, showError);
 });
 
 const headers = {
@@ -82,8 +83,8 @@ async function scanCode() {
             'name': 'geom-original',
         }
     }
-    await fetch(`/image-decode-request`, options = {
-        method: 'POST', body: JSON.stringify(data), headers: headers, mode: 'cors'
+    await fetch(`{{API_URL}}/coji-code/decode`, options = {
+        method: 'POST', body: JSON.stringify(data), headers: headers, mode: 'no-cors'
     })
         .then(await function (response) {
             return response.text();
