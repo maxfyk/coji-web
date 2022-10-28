@@ -84,7 +84,7 @@ async function scanCode() {
         }
     }
     await fetch(`{{API_URL}}/coji-code/decode`, options = {
-        method: 'POST', body: JSON.stringify(data), headers: headers, mode: 'no-cors'
+        method: 'POST', body: JSON.stringify(data), headers: headers, mode: 'cors'
     })
         .then(await function (response) {
             return response.text();
