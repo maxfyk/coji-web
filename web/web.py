@@ -65,7 +65,7 @@ def location_decode(location):
     resp = r.get(f'{API_URL}/coji-code/get-by-city/{location}')
     if resp.status_code == 200:
         codes = resp.json().get('data', None)
-        return render_template('location-decode.html', CODES=enumerate(codes.items()))
+        return render_template('location-decode.html', CODES=enumerate(codes.items()), LOCATION=location)
     return render_template('index.html', ERROR='Something went wrong')
 
 
