@@ -12,7 +12,6 @@ $(function () {
             facingMode: 'environment',
             width: {
                 optional: [
-                    {minWidth: 320},
                     {minWidth: 640},
                     {minWidth: 1024},
                     {minWidth: 1280},
