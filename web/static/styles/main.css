@@ -355,17 +355,15 @@ body {
 /*keyboard-decode*/
 
 .keyboard-div {
-    padding-top: 6rem;
-}
-
-.keyboard-decode-div {
-    left: 25%;
-    padding-top: 2rem;
-    font-size: 3rem;
+    vertical-align: middle;
     text-align: center;
+    width: 100%;
+    padding-top: 6rem;
+    margin-top: 16%;
 }
 
-.keyboard-div {
+.keyboard {
+    display: inline-block;
     touch-action: manipulation;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -374,14 +372,19 @@ body {
     user-select: none;
 
     /*top: 80%;*/
-    margin-top: 16%;
-    margin-left: 19%;
-    width: 800px;
+    width: 820px;
+}
+
+.keyboard-decode-div {
+    left: 25% !important;
+    padding-top: 2rem;
+    font-size: 3rem;
+    text-align: center;
 }
 
 .keyboard-row {
+    margin-left: 110px;
     height: 170px;
-
 }
 
 .piece-button {
