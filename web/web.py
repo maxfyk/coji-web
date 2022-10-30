@@ -66,7 +66,7 @@ def location_decode(location):
     if resp.status_code == 200:
         codes = resp.json().get('data', None)
         return render_template('location-decode.html', CODES=enumerate(codes.items()))
-    return render_template('error-page.html', ERROR='Something went wrong')
+    return render_template('index.html', ERROR='Something went wrong')
 
 
 # keyboard decode page
@@ -77,7 +77,7 @@ def keyboard_decode():
 
 
 # POST pages
-@app.route('/keyboard-decode-post', methods=['post'])
+@app.route('/keyboard-decode', methods=['post'])
 def keyboard_decode_post():
     """Decode using keyboard (post)"""
     code_in = request.form.get('keyboard-decode-in', None)
@@ -94,7 +94,7 @@ def keyboard_decode_post():
         error = data.get('text') or 'Failed to decode your code, please try again later!'
     else:
         error = 'Please enter the code first!'
-    return render_template('error-page.html', ERROR=error)
+    return render_template('keyboard-decode.html', ERROR=error)
 
 
 @app.route('/create-code-submit', methods=['post'])
@@ -119,7 +119,7 @@ def create_code_post():
             error = 'You url is not valid!'
     else:
         error = 'Wrong values. Please try again!'
-    return render_template('error-page.html', ERROR=error)
+    return render_template('create-code.html', ERROR=error)
 
 
 @app.route('/image-decode-request', methods=['post'])
@@ -156,7 +156,7 @@ def modify_code_post():
             error = 'You url is not valid!'
     else:
         error = 'Wrong values. Please try again!'
-    return render_template('error-page.html', ERROR=error)
+    return render_template('modify-code.html', ERROR=error)
 
 
 # static

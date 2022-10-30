@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="stylesheet" media="all" href="{{ url_for('static', filename='styles/main.css')}}">
+<link rel="stylesheet" media="all" href="{{ url_for('static', filename='styles/main.css') }}">
+{% if ERROR %}
+    <script>
+        alert("{{ ERROR }}"+'😢');
+    </script>
+{% endif %}
 <body>
 <a class="camera-warning">Please provide camera access!</a>
 <video class="video-preview" id="stream"></video>
