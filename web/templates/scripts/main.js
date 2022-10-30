@@ -74,6 +74,7 @@ async function scanCode() {
 
         ctx.drawImage(stream, 0, 0, stream.videoWidth, stream.videoHeight);
     }
+    alert(stream.videoWidth + '/' + stream.videoHeight);
     var base64Img = capture.toDataURL('image/jpeg', 1).replace('data:image/jpeg;base64,', '');
     var data = {
         'decode-type': 'image',
