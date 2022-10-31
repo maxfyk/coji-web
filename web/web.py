@@ -86,6 +86,7 @@ def keyboard_decode_post():
         in_data = DECODE_POST_JSON.copy()
         in_data['decode-type'] = 'keyboard'
         in_data['in-data'] = code_in
+        in_data['user-data'] = None
 
         resp = r.post(f'{API_URL}/coji-code/decode', json=in_data)
         data = resp.json()

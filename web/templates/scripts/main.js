@@ -80,7 +80,8 @@ async function scanCode() {
         'user-id': null,
         'style-info': {
             'name': 'geom-original',
-        }
+        },
+        'user-data': null,
     }
     await fetch(`{{API_URL}}/coji-code/decode`, options = {
         method: 'POST', body: JSON.stringify(data), headers: headers, mode: 'cors'
